@@ -36,7 +36,8 @@ services:
       - /iotstackdata/mosquitto/log:/mosquitto/log
       - /iotstackdata/letsencrypt/live/npm-1:/mosquitto/certs
     ports:
-      - 8883:8883
+      #- 8883:8883
+      - 1883:1883
     restart: always
     networks:
       - iotnet
