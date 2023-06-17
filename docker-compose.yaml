@@ -15,8 +15,6 @@ services:
     environment:
       - INFLUX_TOKEN=${INFLUX_TOKEN}
     restart: always
-    ports:
-      - '3000:3000' 
     networks:
       - iotnet
 
