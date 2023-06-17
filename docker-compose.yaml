@@ -1,0 +1,54 @@
+version: '3.8'
+
+networks:
+  iotnet:
+    driver: bridge
+
+services:
+  grafana:
+    image: grafana/grafana:latest
+    hostname: grafana
+    volumes:
+      - /iotstackdata/grafana/data:/var/lib/grafana
+      - /iotstackdata/grafana/config:/etc/grafana
+      - /iotstackdata/grafana/logos:/usr/share/grafana/public/img
+    restart: always
+    networks:
+      - iotnet
+
+  telegraf:
+    image: telegraf:latest
+    hostname: telegraf
+    volumes:
+      - /iotstackdata/telegraf/telegraf.conf:/etc/telegraf/telegraf.conf
+    restart: always
+    networks:
+      - iotnet
+
+  mosquitto:
+    image: eclipse-mosquitto:2
+    hostname: mosquitto
+    volumes:
+      - /iotstackdata/mosquitto/config:/mosquitto/config
+      - /iotstackdata/mosquitto/data:/mosquitto/data
+      - /iotstackdata/mosquitto/log:/mosquitto/log
+      - /iotstackdata/letsencrypt:/mosquitto/certs
+    ports:
+      - 8883:8883
+    restart: always
+    networks:
+      - iotnet
+
+  app:
+    image: 'jc21/nginx-proxy-manager:latest'
+    hostname: nginxproxymanager
+    restart: unless-stopped
+    ports:
+      - '80:80'   # Public HTTP Port
+      - '443:443' # Public HTTPS Port
+      - '81:81'   # Admin Web Port
+    volumes:
+      - /iotstackdata/nginx-proxy-manager/data:/data
+      - /iotstackdata/letsencrypt:/etc/letsencrypt
+    networks:
+      - iotnet
