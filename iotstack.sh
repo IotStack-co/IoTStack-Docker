@@ -40,12 +40,6 @@ cp -r ./iotstackdata/* $BASE_DIR/
 # Set the permissions for the copied files to 777
 find $BASE_DIR -type f -exec chmod 777 {} \;
 
-
-openssl req -new -x509 -days 3000 -keyout /iotstackdata/mosquitto/certs/ca.key -out /iotstackdata/mosquitto/certs/ca.crt
-openssl req -new -sha256 -keyout /iotstackdata/mosquitto/certs/server.key -out /iotstackdata/mosquitto/certs/server.csr
-openssl x509 -req -in /iotstackdata/mosquitto/certs/server.csr -CA /iotstackdata/mosquitto/certs/ca.crt -CAkey /iotstackdata/mosquitto/certs/ca.key -CAcreateserial -out /iotstackdata/mosquitto/certs/server.crt -days 365 -sha256
-
-
 # Start Docker Compose services
 echo "Starting Docker Compose services..."
 docker-compose up -d
