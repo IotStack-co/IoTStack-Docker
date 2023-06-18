@@ -34,7 +34,7 @@ services:
       - /iotstackdata/mosquitto/config:/mosquitto/config
       - /iotstackdata/mosquitto/data:/mosquitto/data
       - /iotstackdata/mosquitto/log:/mosquitto/log
-      - /iotstackdata/letsencrypt/live/npm-1:/mosquitto/certs
+      - /iotstackdata/mosquitto/certs:/mosquitto/certs
     ports:
       #- 8883:8883
       - 1883:1883

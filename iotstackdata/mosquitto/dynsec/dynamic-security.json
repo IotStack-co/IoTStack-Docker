@@ -1,0 +1,120 @@
+{
+    "defaultACLAccess":	{
+      "publishClientSend":	true,
+      "publishClientReceive":	true,
+      "subscribe":	true,
+      "unsubscribe":	true
+    },
+    "clients":	[{
+        "username":	"admin",
+        "textname":	"Dynsec admin user",
+        "roles":	[{
+            "rolename":	"admin"
+          }],
+        "password":	"cZKtKdhh0dfJLB+HnqU9UVNLVWElrgGzzepub2yFLRjYRIprzV3GC65eH5uEIQPBd5HHlfrfKuS9/weCxaX9jQ==",
+        "salt":	"6j2XBU3hc9YQiqkc",
+        "iterations":	101
+      }, {
+        "username":	"test",
+        "roles":	[{
+            "rolename":	"all"
+          }],
+        "password":	"+SNCdSdDaIrA457m5CZ5rJ6afR6re2PKAS9Azsr+fxVfw33IYycZSvwT1F7gPV1D0mqneoEkZ0osLv4WvRoZ3g==",
+        "salt":	"4fe+kY7aCbXMPd66",
+        "iterations":	101
+      }, {
+        "username":	"weatherstation",
+        "roles":	[{
+            "rolename":	"publisher"
+          }],
+        "password":	"GVeDb+eWAyonDCJWtleo3rC1MUUBx8Yu304GqUIAbBE2b78yitYB/BtMNvoT+R8ZpxW8vvHLAVVSIFAX4+VBhw==",
+        "salt":	"GUAPtPX7gfHnfLP/",
+        "iterations":	101
+      }],
+    "groups":	[],
+    "roles":	[{
+        "rolename":	"admin",
+        "acls":	[{
+            "acltype":	"publishClientSend",
+            "topic":	"$CONTROL/dynamic-security/#",
+            "priority":	0,
+            "allow":	true
+          }, {
+            "acltype":	"publishClientReceive",
+            "topic":	"$CONTROL/dynamic-security/#",
+            "priority":	0,
+            "allow":	true
+          }, {
+            "acltype":	"publishClientReceive",
+            "topic":	"$SYS/#",
+            "priority":	0,
+            "allow":	true
+          }, {
+            "acltype":	"publishClientReceive",
+            "topic":	"#",
+            "priority":	0,
+            "allow":	true
+          }, {
+            "acltype":	"subscribePattern",
+            "topic":	"$CONTROL/dynamic-security/#",
+            "priority":	0,
+            "allow":	true
+          }, {
+            "acltype":	"subscribePattern",
+            "topic":	"$SYS/#",
+            "priority":	0,
+            "allow":	true
+          }, {
+            "acltype":	"subscribePattern",
+            "topic":	"#",
+            "priority":	0,
+            "allow":	true
+          }, {
+            "acltype":	"unsubscribePattern",
+            "topic":	"#",
+            "priority":	0,
+            "allow":	true
+          }]
+      }, {
+        "rolename":	"all",
+        "acls":	[{
+            "acltype":	"publishClientSend",
+            "topic":	"profec/#",
+            "priority":	0,
+            "allow":	true
+          }, {
+            "acltype":	"publishClientReceive",
+            "topic":	"profec/#",
+            "priority":	0,
+            "allow":	true
+          }, {
+            "acltype":	"subscribeLiteral",
+            "topic":	"profec/#",
+            "priority":	0,
+            "allow":	true
+          }, {
+            "acltype":	"subscribePattern",
+            "topic":	"profec/#",
+            "priority":	0,
+            "allow":	true
+          }, {
+            "acltype":	"unsubscribeLiteral",
+            "topic":	"profec/#",
+            "priority":	0,
+            "allow":	true
+          }, {
+            "acltype":	"unsubscribePattern",
+            "topic":	"profec/#",
+            "priority":	0,
+            "allow":	true
+          }]
+      }, {
+        "rolename":	"publisher",
+        "acls":	[{
+            "acltype":	"publishClientSend",
+            "topic":	"profec/#",
+            "priority":	0,
+            "allow":	true
+          }]
+      }]
+  }
