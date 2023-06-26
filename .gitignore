@@ -1,1 +1,4 @@
 .env
+iotstackdata/.DS_Store
+.gitignore
+iotstackdata/grafana/.DS_Store
