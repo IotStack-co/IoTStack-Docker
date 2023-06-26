@@ -2,6 +2,7 @@
 
 # Define the base directory
 BASE_DIR="/iotstackdata"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 # Check if base directory exists, if not create it
 if [ ! -d "$BASE_DIR" ]; then
@@ -12,7 +13,7 @@ if [ ! -d "$BASE_DIR" ]; then
 fi
 
 # Define directories to create
-declare -a DIRS=(
+DIRS=(
   "$BASE_DIR/grafana/data"
   "$BASE_DIR/grafana/config"
   "$BASE_DIR/grafana/logos"
@@ -36,9 +37,9 @@ done
 
 # Copy initial configuration files from the current directory
 echo "Copying initial configuration files..."
-cp -r ./iotstackdata/* $BASE_DIR/
+cp -r "$SCRIPT_DIR/iotstackdata"/* "$BASE_DIR/"
 # Set the permissions for the copied files to 777
-find $BASE_DIR -type f -exec chmod 777 {} \;
+find "$BASE_DIR" -type f -exec chmod 777 {} \;
 
 # Start Docker Compose services
 echo "Starting Docker Compose services..."
