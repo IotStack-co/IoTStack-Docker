@@ -11,7 +11,7 @@ services:
     volumes:
       - /iotstackdata/grafana/data:/var/lib/grafana
       - /iotstackdata/grafana/config:/etc/grafana
-      #- /iotstackdata/grafana/logos:/usr/share/grafana/public/img
+      - /iotstackdata/grafana/logos:/usr/share/grafana/public/img
     environment:
       - INFLUX_TOKEN=${INFLUX_TOKEN}
     restart: always
