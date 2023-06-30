@@ -43,6 +43,15 @@ services:
     networks:
       - iotnet
 
+  mqttjson2mqttline:
+    image: harbor.swms-cloud.com/iiot/mqttjson2mqttline:teltonika
+    hostname: mqttjson2mqttline
+    volumes:
+      - /iotstackdata/mqttjson2mqttline/config:/app/publish/config
+    restart: always
+    networks:
+      - iotnet
+
   app:
     image: 'jc21/nginx-proxy-manager:latest'
     hostname: nginxproxymanager
