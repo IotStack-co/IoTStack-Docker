@@ -47,7 +47,7 @@ services:
     image: harbor.swms-cloud.com/iiot/mqttjson2mqttline:teltonika
     hostname: mqttjson2mqttline
     volumes:
-      - /iotstackdata/mqttjson2mqttline/config:/app/publish/config
+      - /iotstackdata/mqttjson2mqttline/config:/app/config
     restart: always
     networks:
       - iotnet
