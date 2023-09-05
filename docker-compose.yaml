@@ -51,17 +51,3 @@ services:
     restart: always
     networks:
       - iotnet
-
-  app:
-    image: 'jc21/nginx-proxy-manager:latest'
-    hostname: nginxproxymanager
-    restart: unless-stopped
-    ports:
-      - '80:80'   # Public HTTP Port
-      - '443:443' # Public HTTPS Port
-      - '81:81'   # Admin Web Port
-    volumes:
-      - /iotstackdata/nginx-proxy-manager/data:/data
-      - /iotstackdata/letsencrypt:/etc/letsencrypt
-    networks:
-      - iotnet
