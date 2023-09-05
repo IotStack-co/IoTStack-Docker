@@ -14,7 +14,9 @@ services:
       - /iotstackdata/grafana/logos:/usr/share/grafana/public/img
     environment:
       - INFLUX_TOKEN=${INFLUX_TOKEN}
-    restart: always
+    deploy:
+      restart_policy:
+        condition: on-failure
     networks:
       - iotnet
 
