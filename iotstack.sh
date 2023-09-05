@@ -42,7 +42,7 @@ find $BASE_DIR -type f -exec chmod 777 {} \;
 
 # Start Docker Compose services
 echo "Starting Docker Compose services..."
-docker stack deploy iotstack
+docker stack deploy iotstack --compose-file docker-compose.yaml
 
 # wait for Grafana to start
 sleep 30
