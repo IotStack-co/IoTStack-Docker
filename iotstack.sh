@@ -42,7 +42,7 @@ find $BASE_DIR -type f -exec chmod 777 {} \;
 
 # Start Docker Compose services
 echo "Starting Docker Compose services..."
-docker-compose up -d
+docker stack deploy
 
 # wait for Grafana to start
 sleep 30
