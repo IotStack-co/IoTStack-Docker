@@ -2,7 +2,7 @@ version: '3.8'
 
 networks:
   iotnet:
-    driver: bridge
+    driver: overlay
 
 services:
   grafana:
@@ -23,7 +23,9 @@ services:
     hostname: telegraf
     volumes:
       - /iotstackdata/telegraf/telegraf.conf:/etc/telegraf/telegraf.conf
-    restart: always
+    deploy:
+      restart_policy:
+        condition: on-failure
     networks:
       - iotnet
 
@@ -39,7 +41,9 @@ services:
     ports:
       - 8883:8883
       - 1883:1883
-    restart: always
+    deploy:
+      restart_policy:
+        condition: on-failure
     networks:
       - iotnet
 
@@ -48,6 +52,8 @@ services:
     hostname: mqttjson2mqttline
     volumes:
       - /iotstackdata/mqttjson2mqttline/config:/app/config
-    restart: always
+    deploy:
+      restart_policy:
+        condition: on-failure
     networks:
       - iotnet
